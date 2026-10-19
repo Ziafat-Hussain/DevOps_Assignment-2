@@ -20,7 +20,10 @@ jobs:
 
       - name: Inspect Context Objects
         run: |
-          echo "Username: ${{ github.actor }}"
+          echo "Actor Name: ${{ github.actor }}"
+          echo "Triggered By: ${{ github.triggering_actor }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Repository Owner: ${{ github.repository_owner }}"
           echo "Event Trigger: ${{ github.event_name }}"
           echo "Operating System: ${{ runner.os }}"
           echo "Environment Variable: ${{ env.MY_TEST_ENV }}"
@@ -35,7 +38,7 @@ jobs:
         run: echo "The success() function means previous steps worked."
 
       - name: Conditional - Contains Function
-        if: contains(github.actor, 'ahsan')
+        if: contains(github.actor, 'ziafat')
         run: echo "The contains() function found your username!"
 
       - name: Conditional - Run on Failure
