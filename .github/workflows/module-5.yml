@@ -1,0 +1,30 @@
+name: Module 5 Multi-OS and Self-Hosted
+
+on: [push, workflow_dispatch]
+
+jobs:
+  # Task 5A: Windows Runner
+  windows-job:
+    runs-on: windows-latest
+    steps:
+      - name: Run PowerShell and Choco
+        shell: pwsh
+        run: |
+          Write-Output "Running on Windows Operating System"
+          choco --version
+
+  # Task 5A: Mac OS Runner
+  macos-job:
+    runs-on: macos-latest
+    steps:
+      - name: Compile Swift Code
+        run: |
+          echo 'print("Running on Mac OS!")' > hello.swift
+          swift hello.swift
+
+  # Task 5B: Self-Hosted Runner
+  local-job:
+    runs-on: self-hosted
+    steps:
+      - name: Print self-hosted message
+        run: echo "This job is running on my very own computer!"
