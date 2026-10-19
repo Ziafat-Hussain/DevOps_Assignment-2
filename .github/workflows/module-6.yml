@@ -1,0 +1,48 @@
+name: Module 6 Matrix, Caching, and Containers
+
+on: [push, workflow_dispatch]
+
+jobs:
+  # Task 6A: Matrix Strategy
+  matrix-job:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [18, 20]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Print OS and Node version
+        run: echo "Running on ${{ matrix.os }} with Node version ${{ matrix.node-version }}"
+
+  # Task 6B: Dependency Caching
+  caching-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a dummy file to cache
+        run: |
+          mkdir -p my-cache
+          echo "Saving this data for later!" > my-cache/data.txt
+
+      - name: Cache the dummy file
+        uses: actions/cache@v3
+        with:
+          path: my-cache
+          key: my-simple-cache-key
+
+  # Task 6C: Service Containers
+  container-job:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+    steps:
+      - name: Connect to Redis Container
+        run: |
+          sudo apt-get install -y redis-tools
+          redis-cli -h localhost -p 6379 ping
