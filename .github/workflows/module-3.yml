@@ -1,0 +1,43 @@
+name: Module 3 Contexts and Conditionals
+
+# 1. Event
+on: [push] 
+
+env:
+  MY_TEST_ENV: "This is an environment variable"
+
+# 2. Workflows & 3. Jobs
+jobs:
+  context-job:
+    # 4. Runners
+    runs-on: ubuntu-latest 
+    
+    # 5. Steps
+    steps:
+      - name: Checkout Repository
+        # 6. Actions
+        uses: actions/checkout@v4 
+
+      - name: Inspect Context Objects
+        run: |
+          echo "Username: ${{ github.actor }}"
+          echo "Event Trigger: ${{ github.event_name }}"
+          echo "Operating System: ${{ runner.os }}"
+          echo "Environment Variable: ${{ env.MY_TEST_ENV }}"
+          echo "Custom Variable: ${{ vars.MY_VAR }}"
+
+      - name: Conditional - Always Run
+        if: always()
+        run: echo "The always() function makes this run no matter what."
+
+      - name: Conditional - Run on Success
+        if: success()
+        run: echo "The success() function means previous steps worked."
+
+      - name: Conditional - Contains Function
+        if: contains(github.actor, 'ahsan')
+        run: echo "The contains() function found your username!"
+
+      - name: Conditional - Run on Failure
+        if: failure()
+        run: echo "This will only print if a previous step breaks."
