@@ -6,7 +6,11 @@ on:
         description: 'Ziafat Hussain'
         required: true
       greeting:
+<<<<<<< HEAD
         description: 'Salam from Ziafat'
+=======
+        description: 'Salam From Ziafat'
+>>>>>>> e4beabb42f558deed978999e9630eeafc025095d
         required: true
       data:
         description: 'Extra data'
