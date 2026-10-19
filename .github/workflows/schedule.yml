@@ -2,6 +2,7 @@ name: Scheduled Event
 on:
   schedule:
     - cron: '*/5 * * * *'
+
 jobs:
   run-timer:
     runs-on: ubuntu-latest
