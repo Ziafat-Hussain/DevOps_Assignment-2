@@ -1,0 +1,18 @@
+name: Module 4 Secrets and Variables
+
+on: [push, workflow_dispatch]
+
+jobs:
+  data-management:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Configuration Variable
+        run: echo "My variable is ${{ vars.MY_VAR }}"
+
+      - name: Safely Access Encrypted Secret
+        run: echo "My hidden secret is ${{ secrets.MY_SECRET }}"
+
+      - name: Authenticate API Call with GITHUB_TOKEN
+        run: |
+          echo "Making a safe REST API call using the auto-generated token..."
+          curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}
