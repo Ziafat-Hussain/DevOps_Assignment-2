@@ -1,0 +1,10 @@
+name: Webhook Event
+on:
+  repository_dispatch:
+    types: [custom-webhook]
+jobs:
+  run-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print webhook message
+        run: echo "An outside signal started this workflow!"
