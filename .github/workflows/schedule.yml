@@ -2,7 +2,7 @@ name: Scheduled Event
 on:
   schedule:
     - cron: '*/5 * * * *'
-workflow_dispatch:
+workflow_dispatch: 
 jobs:
   run-timer:
     runs-on: ubuntu-latest
