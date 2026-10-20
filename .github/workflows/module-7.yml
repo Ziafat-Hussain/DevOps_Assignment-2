@@ -1,0 +1,16 @@
+name: Module 7 JavaScript Action Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-js-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run My Custom JavaScript Action
+        uses: ./.github/actions/my-js-action
+        with:
+          name: 'Ziafat'
