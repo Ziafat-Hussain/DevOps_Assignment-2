@@ -1,4 +1,4 @@
-name: Module 7 JavaScript Action Workflow
+name: JS Action Module 7
 
 on:
   workflow_dispatch:
