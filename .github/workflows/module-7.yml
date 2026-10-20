@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Run My Custom JavaScript Action
-        uses: ./.github/actions/my-js-action
+      - name: Call my custom action
+        uses: Ziafat-Hussain/assign-custom-action@main
         with:
-          who-to-greet: 'Ziafat'
+          name: 'Ziafat'
