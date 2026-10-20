@@ -13,4 +13,4 @@ jobs:
       - name: Run My Custom JavaScript Action
         uses: ./.github/actions/my-js-action
         with:
-          name: 'Ziafat'
+          who-to-greet: 'Ziafat'
